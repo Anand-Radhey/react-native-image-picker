@@ -194,6 +194,10 @@ public class ImagePickerModule extends ReactContextBaseJavaModule
     dialog.show();
   }
 
+  public void doOnError(String reason) {
+    responseHelper.invokeError(callback, reason);
+  }
+
   public void doOnCancel()
   {
     responseHelper.invokeCancel(callback);
@@ -546,7 +550,7 @@ public class ImagePickerModule extends ReactContextBaseJavaModule
                     {
                       return;
                     }
-                    module.doOnCancel();
+                    module.doOnError("Permissions weren't granted");
                   }
 
                   @Override
