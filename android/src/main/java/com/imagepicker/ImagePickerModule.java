@@ -143,8 +143,9 @@ public class ImagePickerModule extends ReactContextBaseJavaModule
       return;
     }
 
-    this.callback = callback;
     this.options = options;
+    this.callback = callback;
+
     imageConfig = new ImageConfig(null, null, 0, 0, 100, 0, false);
 
     final AlertDialog dialog = UI.chooseDialog(this, options, new UI.OnAction()
@@ -221,6 +222,7 @@ public class ImagePickerModule extends ReactContextBaseJavaModule
     }
 
     this.options = options;
+    this.callback = callback;
 
     if (!permissionsCheck(currentActivity, callback, REQUEST_PERMISSIONS_FOR_CAMERA))
     {
@@ -265,8 +267,6 @@ public class ImagePickerModule extends ReactContextBaseJavaModule
       return;
     }
 
-    this.callback = callback;
-
     try
     {
       currentActivity.startActivityForResult(cameraIntent, requestCode);
@@ -293,6 +293,7 @@ public class ImagePickerModule extends ReactContextBaseJavaModule
     }
 
     this.options = options;
+    this.callback = callback;
 
     if (!permissionsCheck(currentActivity, callback, REQUEST_PERMISSIONS_FOR_LIBRARY))
     {
@@ -321,8 +322,6 @@ public class ImagePickerModule extends ReactContextBaseJavaModule
       responseHelper.invokeError(callback, "Cannot launch photo library");
       return;
     }
-
-    this.callback = callback;
 
     try
     {
